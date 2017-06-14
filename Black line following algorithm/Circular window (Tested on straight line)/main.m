@@ -9,6 +9,8 @@ YP = P(:,2);
 YP = YP';
 dirP = P(:,3);
 dirP = dirP';
+TP = P(:,4);
+TP = TP';
 XI = I(:,1);
 XI = XI';
 YI = I(:,2);
@@ -21,7 +23,7 @@ radius = 1;
 
 %Event Detection
 Ei = 1;
-E = [];
+E(1,1) = 0;
 Eflag = 1;
 for i=2:ILen
     if (I(i,1) == I(i-1,1)) && (I(i,2) ~= I(i-1,2))
@@ -46,24 +48,30 @@ for i=2:ILen
         end    
     end
 end
+
+NofEvents = length(E(:,1));
 E(Ei,1) = I(i,1);
 E(Ei,2) = I(i,2);
 E(Ei,3) = i;
-NofEvents = length(E(:,1))
-E
+disp('Number of events')
+disp(NofEvents)
+disp('Events')
+disp(E)
 
 %Finding Initial Point
 left = E(1,3);
 right = E(2,3);
 numx = (XP(1));
 numy = (YP(1));
-initindex = CircleSearch(left,right,numx,XI,numy,YI)
-XI(initindex)
-YI(initindex)
+initindex = CircleSearch(left,right,numx,XI,numy,YI);
 if initindex == -1
-    print = 'Wrong initial position, not in the path'
+    print = 'Wrong initial position, not in the path';
+    disp(print)
     return
 end
+print = ['initial position is X = ',num2str(XI(initindex)),', Y = ',num2str(YI(initindex)),', Starting index = ',num2str(initindex)];
+disp(print)
+disp('Result')
 
 %comparision Algorithm
 
@@ -73,15 +81,15 @@ Ymax = YI(initindex)+radius;
 Ymin = YI(initindex)-radius;
 ECount = 1;
 Errorcount = 0;
-Error = [];
+Error(1,1) = 0;
 Errorflag = 0;
 for i=1:PLen
-    if (CircleWindow(Ymax,Ymin,XP(i),Xmax-radius,YP(i),Ymax-radius))
+    if (CircleWindow(Xmax,Xmin,Ymax,Ymin,XP(i),Xmax-radius,YP(i),Ymax-radius))
         if Errorflag == 1
             Errorflag = 0;
             Error(Errorcount,4) = XP(i);
             Error(Errorcount,5) = YP(i);
-            Error(Errorcount,6) = 0;%ZP(i-1);
+            Error(Errorcount,6) = TP(i);
         end
         if ((YP(i) >= ((3*(Ymax-Ymin)/4)+Ymin)) || (YP(i) <= ((Ymax-Ymin)/4)+Ymin))
             left = 1;
@@ -120,7 +128,7 @@ for i=1:PLen
                 Errorcount = Errorcount + 1;
                 Error(Errorcount,1) = XP(i-1);
                 Error(Errorcount,2) = YP(i-1);
-                Error(Errorcount,3) = 0;%ZP(i-1);
+                Error(Errorcount,3) = TP(i-1);
                 Errorflag = 1;
             end
         else
@@ -130,6 +138,14 @@ for i=1:PLen
             Ymin = YI(Uindex)-radius;
         end
     end 
-end 
-Error
+end
+
+if(Error(1,1) == 0)
+    disp('A perfect run')
+else
+    disp('Error is')
+    disp('it has X and Y co-ordinate with time when left and X and Y co-ordinate with time when it came back to the line')
+    disp(Error)
+end
+
         
