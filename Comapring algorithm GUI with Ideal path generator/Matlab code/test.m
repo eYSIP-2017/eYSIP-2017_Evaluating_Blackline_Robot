@@ -1,0 +1,16 @@
+clear;
+clc;
+I = dlmread('ideal_test.txt');
+XI = I(:,1);
+XI = (XI(:)-345).*0.03484;
+YI = I(:,2);
+YI = 5000-YI;
+YI = (YI(:)-345).*0.03484;
+AI = idealfile(XI,YI);
+XI = AI(:,1);
+YI = AI(:,2);
+DI = AI(:,2);
+TI = AI(:,2);
+DI(:)=0;
+TI(:)=0;
+dlmwrite('test.txt',[XI YI DI TI],'\t');
