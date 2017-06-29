@@ -138,7 +138,7 @@ for i=1:PLen
                 for l=1:length(Ideal(PrevNode,NextNode,:,1))
                     if (Ideal(PNI(Uindex),NNI(Uindex),l,1) == XI(Uindex)) && (Ideal(PNI(Uindex),NNI(Uindex),l,2) == YI(Uindex))
                         sdist = length(Ideal(PrevNode,NextNode,:,1))-l;
-                        SkipDist = SkipDist + sdist .* (1./28.346).*20;
+                        SkipDist = SkipDist + sdist .* (1./28.346);
                     end
                 end
                     [sdist(1),route1] = dijkstra(Weight,PrevNode,PNI(Uindex));
@@ -151,7 +151,7 @@ for i=1:PLen
                      end
                      PrevNode = PNI(Uindex);
                      NextNode = NNI(Uindex);
-                SkipDist = SkipDist + sdist .* (1./28.346).*20; 
+                SkipDist = SkipDist + sdist .* (1./28.346); 
                 Error(Errorcount,11) = SkipDist-SkipBuff;
                 Error(Errorcount,13) = Uindex;
                 SkipBuff = SkipDist;
@@ -232,10 +232,13 @@ for i=1:PLen
                 Completed = 1;
             end
 end
+%{
 tot_errortime = 0;
 for i=1:(Errorcount-1)
     tot_errortime = tot_errortime + (Error(i,8)-Error(i,3));
 end
+%}
+tot_errortime = TP(Plen);
 if(Error(1,1) == 0)
     disp('A perfect run')
 else

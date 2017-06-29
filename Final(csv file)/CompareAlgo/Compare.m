@@ -232,10 +232,13 @@ for i=1:PLen
                 Completed = 1;
             end
 end
+%{
 tot_errortime = 0;
 for i=1:(Errorcount-1)
     tot_errortime = tot_errortime + (Error(i,8)-Error(i,3));
 end
+%}
+tot_errortime = TP(Plen);
 if(Error(1,1) == 0)
     disp('A perfect run')
 else
