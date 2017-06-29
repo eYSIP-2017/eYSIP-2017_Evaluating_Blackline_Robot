@@ -223,7 +223,7 @@ for i=1:PLen
     end 
 end
 for i=1:PLen
-            left = 1920;
+            left = 1909;
             right = ILen;
             numx = XP(i);
             numy = YP(i);
@@ -238,7 +238,7 @@ for i=1:(Errorcount-1)
     tot_errortime = tot_errortime + (Error(i,8)-Error(i,3));
 end
 %}
-tot_errortime = TP(Plen);
+tot_errortime = TP(PLen);
 if(Error(1,1) == 0)
     disp('A perfect run')
 else

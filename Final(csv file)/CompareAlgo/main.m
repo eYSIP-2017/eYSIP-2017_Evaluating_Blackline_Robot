@@ -19,7 +19,7 @@ for i = 1:no_of_files
     tot_errortime = out(2);
     tot_skip_dist = out(3);
     Completed = out(4);
-    Total = tot_dist + 100.*tot_errortime + 10.*tot_skip_dist; 
+    Total = 10000.*(1./tot_dist) + 3000.*(1./tot_errortime) + 100.*(1./tot_skip_dist); 
     %List = dlmread('list.txt');
     %list_len = length(List);
     List(i,1) = i;
@@ -48,13 +48,13 @@ for i=1:no_of_files
         inComp(j,2)=List(i,5);
     end
 end
-[tot,index] = sort(Comp(:,2));
-for i = 1:length(Comp)
+[tot,index] = sort(Comp(:,2),'descend');
+for i = 1:length(index)
     disp([Comp(index(i),1) tot(i)])
 end
 disp('Rank list based on incomplete')
-[Name,Dist] = sort(inComp(:,2));
-for i = 1:length(inComp)
+[Name,Dist] = sort(inComp(:,2),'descend');
+for i = 1:length(Dist)
     disp([inComp(Dist(i),1) Name(i)])
 end
 %disp('Fastest bot is')
