@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.8)
+project( indoor_loc )
+set( OpenCV_FOUND 1 )
+find_package( OpenCV REQUIRED )
+add_executable( calibrate_camera_v1.0 calibrate_camera_v1.0.cpp utility_functions.cpp)
+add_executable( pred_loc pred_loc.cpp calculate_world_coordinate.cpp detect_bot_marker.cpp calculate_extrinsic.cpp utility_functions.cpp)
+target_link_libraries( calibrate_camera_v1.0 ${OpenCV_LIBS} )
+target_link_libraries( pred_loc ${OpenCV_LIBS} )

@@ -1,0 +1,4 @@
+/home/khalid/workspace/indoor_localization/workspace/aruco_learn/indoor_loc/build/CMakeFiles/edit_cache.dir
+/home/khalid/workspace/indoor_localization/workspace/aruco_learn/indoor_loc/build/CMakeFiles/rebuild_cache.dir
+/home/khalid/workspace/indoor_localization/workspace/aruco_learn/indoor_loc/build/CMakeFiles/pred_loc.dir
+/home/khalid/workspace/indoor_localization/workspace/aruco_learn/indoor_loc/build/CMakeFiles/calibrate_camera_v1.0.dir

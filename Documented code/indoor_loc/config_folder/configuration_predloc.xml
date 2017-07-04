@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<predlocMode>1</predlocMode>
+<inputImageFile>input_cc_images.xml</inputImageFile>
+<videoFile>video4.mov</videoFile>
+<camId></camId>
+<markersX>22</markersX>
+<markersY>2</markersY>
+<markerLength>0.06</markerLength>
+<markerSeparation>0.01</markerSeparation>
+<dictionaryId>6</dictionaryId>
+<calibFile>calib_video.txt</calibFile> 
+<detectorParameters>detector_params.yml</detectorParameters>
+<refindStrategy>true</refindStrategy>
+<botDictionaryId>12</botDictionaryId>
+<botMarkerLength>0.09</botMarkerLength>
+</opencv_storage>

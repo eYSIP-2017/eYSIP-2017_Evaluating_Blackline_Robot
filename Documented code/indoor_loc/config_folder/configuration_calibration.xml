@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<calibMode>1</calibMode>
+<inputImageFile>input_images.xml</inputImageFile>
+<videoFile>calib_video.mov</videoFile>
+<camId></camId>
+<markersX>22</markersX>
+<markersY>2</markersY>
+<markerLength>0.06</markerLength>
+<markerSeparation>0.01</markerSeparation>
+<dictionaryId>6</dictionaryId>
+<outputFile>calib_video.txt</outputFile> 
+<detectorParameters>detector_params.yml</detectorParameters>
+<refindStrategy>true</refindStrategy>
+<zeroTangentialDistortion>false</zeroTangentialDistortion>
+<fixAspectRatio></fixAspectRatio>
+<fixPrincipalPoint>false</fixPrincipalPoint>
+</opencv_storage>
